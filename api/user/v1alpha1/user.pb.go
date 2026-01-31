@@ -25,7 +25,7 @@ const (
 
 type Response struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	Code          int32                  `protobuf:"varint,1,opt,name=code,proto3" json:"code,omitempty"`
+	Code          BizCode                `protobuf:"varint,1,opt,name=code,proto3,enum=zjut.jh.common.exception.v1alpha1.BizCode" json:"code,omitempty"`
 	Message       string                 `protobuf:"bytes,2,opt,name=message,proto3" json:"message,omitempty"`
 	Data          *structpb.Value        `protobuf:"bytes,3,opt,name=data,proto3" json:"data,omitempty"`
 	unknownFields protoimpl.UnknownFields
@@ -62,11 +62,11 @@ func (*Response) Descriptor() ([]byte, []int) {
 	return file_user_v1alpha1_user_proto_rawDescGZIP(), []int{0}
 }
 
-func (x *Response) GetCode() int32 {
+func (x *Response) GetCode() BizCode {
 	if x != nil {
 		return x.Code
 	}
-	return 0
+	return BizCode_OK
 }
 
 func (x *Response) GetMessage() string {
@@ -319,9 +319,9 @@ var File_user_v1alpha1_user_proto protoreflect.FileDescriptor
 
 const file_user_v1alpha1_user_proto_rawDesc = "" +
 	"\n" +
-	"\x18user/v1alpha1/user.proto\x12\x19zjut.jh.api.user.v1alpha1\x1a\x1cgoogle/api/annotations.proto\x1a\x1cgoogle/protobuf/struct.proto\"d\n" +
-	"\bResponse\x12\x12\n" +
-	"\x04code\x18\x01 \x01(\x05R\x04code\x12\x18\n" +
+	"\x18user/v1alpha1/user.proto\x12\x19zjut.jh.api.user.v1alpha1\x1a\x1cgoogle/api/annotations.proto\x1a\x1cgoogle/protobuf/struct.proto\x1a\x1auser/v1alpha1/common.proto\"\x90\x01\n" +
+	"\bResponse\x12>\n" +
+	"\x04code\x18\x01 \x01(\x0e2*.zjut.jh.common.exception.v1alpha1.BizCodeR\x04code\x12\x18\n" +
 	"\amessage\x18\x02 \x01(\tR\amessage\x12*\n" +
 	"\x04data\x18\x03 \x01(\v2\x16.google.protobuf.ValueR\x04data\"s\n" +
 	"\x0fRegisterRequest\x12\x1c\n" +
@@ -368,25 +368,27 @@ var file_user_v1alpha1_user_proto_goTypes = []any{
 	(*LoginRequest)(nil),         // 2: zjut.jh.api.user.v1alpha1.LoginRequest
 	(*ResetPasswordRequest)(nil), // 3: zjut.jh.api.user.v1alpha1.ResetPasswordRequest
 	(*DeleteRequest)(nil),        // 4: zjut.jh.api.user.v1alpha1.DeleteRequest
-	(*structpb.Value)(nil),       // 5: google.protobuf.Value
+	(BizCode)(0),                 // 5: zjut.jh.common.exception.v1alpha1.BizCode
+	(*structpb.Value)(nil),       // 6: google.protobuf.Value
 }
 var file_user_v1alpha1_user_proto_depIdxs = []int32{
-	5, // 0: zjut.jh.api.user.v1alpha1.Response.data:type_name -> google.protobuf.Value
-	1, // 1: zjut.jh.api.user.v1alpha1.UserCenterService.Register:input_type -> zjut.jh.api.user.v1alpha1.RegisterRequest
-	2, // 2: zjut.jh.api.user.v1alpha1.UserCenterService.Login:input_type -> zjut.jh.api.user.v1alpha1.LoginRequest
-	3, // 3: zjut.jh.api.user.v1alpha1.UserCenterService.ResetPassword:input_type -> zjut.jh.api.user.v1alpha1.ResetPasswordRequest
-	4, // 4: zjut.jh.api.user.v1alpha1.UserCenterService.Delete:input_type -> zjut.jh.api.user.v1alpha1.DeleteRequest
-	2, // 5: zjut.jh.api.user.v1alpha1.UserCenterService.OauthLogin:input_type -> zjut.jh.api.user.v1alpha1.LoginRequest
-	0, // 6: zjut.jh.api.user.v1alpha1.UserCenterService.Register:output_type -> zjut.jh.api.user.v1alpha1.Response
-	0, // 7: zjut.jh.api.user.v1alpha1.UserCenterService.Login:output_type -> zjut.jh.api.user.v1alpha1.Response
-	0, // 8: zjut.jh.api.user.v1alpha1.UserCenterService.ResetPassword:output_type -> zjut.jh.api.user.v1alpha1.Response
-	0, // 9: zjut.jh.api.user.v1alpha1.UserCenterService.Delete:output_type -> zjut.jh.api.user.v1alpha1.Response
-	0, // 10: zjut.jh.api.user.v1alpha1.UserCenterService.OauthLogin:output_type -> zjut.jh.api.user.v1alpha1.Response
-	6, // [6:11] is the sub-list for method output_type
-	1, // [1:6] is the sub-list for method input_type
-	1, // [1:1] is the sub-list for extension type_name
-	1, // [1:1] is the sub-list for extension extendee
-	0, // [0:1] is the sub-list for field type_name
+	5, // 0: zjut.jh.api.user.v1alpha1.Response.code:type_name -> zjut.jh.common.exception.v1alpha1.BizCode
+	6, // 1: zjut.jh.api.user.v1alpha1.Response.data:type_name -> google.protobuf.Value
+	1, // 2: zjut.jh.api.user.v1alpha1.UserCenterService.Register:input_type -> zjut.jh.api.user.v1alpha1.RegisterRequest
+	2, // 3: zjut.jh.api.user.v1alpha1.UserCenterService.Login:input_type -> zjut.jh.api.user.v1alpha1.LoginRequest
+	3, // 4: zjut.jh.api.user.v1alpha1.UserCenterService.ResetPassword:input_type -> zjut.jh.api.user.v1alpha1.ResetPasswordRequest
+	4, // 5: zjut.jh.api.user.v1alpha1.UserCenterService.Delete:input_type -> zjut.jh.api.user.v1alpha1.DeleteRequest
+	2, // 6: zjut.jh.api.user.v1alpha1.UserCenterService.OauthLogin:input_type -> zjut.jh.api.user.v1alpha1.LoginRequest
+	0, // 7: zjut.jh.api.user.v1alpha1.UserCenterService.Register:output_type -> zjut.jh.api.user.v1alpha1.Response
+	0, // 8: zjut.jh.api.user.v1alpha1.UserCenterService.Login:output_type -> zjut.jh.api.user.v1alpha1.Response
+	0, // 9: zjut.jh.api.user.v1alpha1.UserCenterService.ResetPassword:output_type -> zjut.jh.api.user.v1alpha1.Response
+	0, // 10: zjut.jh.api.user.v1alpha1.UserCenterService.Delete:output_type -> zjut.jh.api.user.v1alpha1.Response
+	0, // 11: zjut.jh.api.user.v1alpha1.UserCenterService.OauthLogin:output_type -> zjut.jh.api.user.v1alpha1.Response
+	7, // [7:12] is the sub-list for method output_type
+	2, // [2:7] is the sub-list for method input_type
+	2, // [2:2] is the sub-list for extension type_name
+	2, // [2:2] is the sub-list for extension extendee
+	0, // [0:2] is the sub-list for field type_name
 }
 
 func init() { file_user_v1alpha1_user_proto_init() }
@@ -394,6 +396,7 @@ func file_user_v1alpha1_user_proto_init() {
 	if File_user_v1alpha1_user_proto != nil {
 		return
 	}
+	file_user_v1alpha1_common_proto_init()
 	type x struct{}
 	out := protoimpl.TypeBuilder{
 		File: protoimpl.DescBuilder{
